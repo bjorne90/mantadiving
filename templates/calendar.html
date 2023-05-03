@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Calendar</h2>
+  <div id="calendar"></div>
+
+  <script>
+    $(document).ready(function() {
+      $('#calendar').fullCalendar({
+        events: function(start, end, timezone, callback) {
+          const courseEvents = fetch('/courses/api/courses/')
+            .then(response => response.json())
+            .then(data => data.map(course => ({
+              title: course.name,
+              start: course.start_date,
+              end: course.end_date,
+              color: 'blue',
+            })));
+
+          const tripEvents = fetch('/trips/api/trips/')
+            .then(response => response.json())
+            .then(data => data.map(trip => ({
+              title: trip.destination,
+              start: trip.start_date,
+              end: trip.end_date,
+              color: 'green',
+            })));
+
+          Promise.all([courseEvents, tripEvents])
+            .then(([courses, trips]) => {
+              callback([...courses, ...trips]);
+            });
+        },
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay'
+        },
+        defaultView: 'month',
+      });
+    });
+  </script>
+{% endblock %}

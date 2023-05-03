@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Trips</h1>
+    <a href="{% url 'trips:trip_add' %}">Add Trip</a>
+    <ul>
+        {% for trip in trips %}
+            <li>
+                {{ trip.title }}
+                <a href="{% url 'trips:trip_update' trip.pk %}">Edit</a>
+                <a href="{% url 'trips:trip_delete' trip.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
