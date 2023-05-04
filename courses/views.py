@@ -2,11 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Course
 from .forms import CourseForm
 from django.urls import reverse
+from django.views.generic import ListView
+from courses.models import Course
+from trips.models import Trip
 
 # List view (already created)
 def course_list(request):
-    courses = Course.objects.all()
+    courses = Course.objects.filter(published=True)
     return render(request, 'courses/course_list.html', {'courses': courses})
+
 
 # Add view
 def course_add(request):
@@ -52,3 +56,17 @@ def booking_create(request, pk):
     else:
         form = BookingForm()
     return render(request, 'courses/booking_form.html', {'form': form, 'course': course})
+
+class CourseListView(ListView):
+    model = Course
+    queryset = Course.objects.filter(published=True)
+    template_name = 'courses/course_list.html'
+
+def course_detail(request, pk):
+    course = get_object_or_404(Course, pk=pk)
+    return render(request, 'courses/course_detail.html', {'course': course})
+
+def home(request):
+    courses = Course.objects.filter(published=True)
+    trips = Trip.objects.filter(published=True)
+    return render(request, 'home.html', {'courses': courses, 'trips': trips})

@@ -9,4 +9,7 @@ urlpatterns = [
     path('<int:pk>/update/', views.course_update, name='course_update'),
     path('<int:pk>/delete/', views.course_delete, name='course_delete'),
     path('<int:pk>/book/', views.booking_create, name='course_book'),
+    path('<int:pk>/', views.course_detail, name='course_detail'),
+    path('', views.home, name='home'),
+
 ]

@@ -1,31 +1,34 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <!-- Hero Section -->
-  <section class="hero d-flex align-items-center">
-    <div class="container">
+  <section class="hero">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-12 hero-content">
           <h1>Welcome to Manta Diving School!</h1>
-          <p class="lead">We offer a variety of courses and trips to suit divers of all levels.</p>
+          <p>We offer a variety of courses and trips to suit divers of all levels.</p>
           <a href="{% url 'courses:course_list' %}" class="btn btn-primary">View Courses</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Courses Section -->
-  <section class="courses py-5">
-    <div class="container">
-      <h2>Upcoming Courses</h2>
+  <section class="upcoming-courses">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="section-title">Upcoming Courses</h2>
+        </div>
+      </div>
       <div class="row">
         {% for course in courses %}
-          <div class="col-md-4 col-sm-12 mb-4">
+          <div class="col-md-4">
             <div class="card">
               <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
               <div class="card-body">
                 <h5 class="card-title">{{ course.title }}</h5>
                 <p class="card-text">{{ course.description }}</p>
+                <p class="card-text"><small class="text-muted">{{ course.start_date|date:"F d, Y" }}</small></p>
                 <a href="{% url 'courses:course_detail' course.pk %}" class="btn btn-primary">Learn More</a>
               </div>
             </div>
@@ -37,18 +40,22 @@
     </div>
   </section>
 
-  <!-- Trips Section -->
-  <section class="trips py-5">
-    <div class="container">
-      <h2>Upcoming Trips</h2>
+  <section class="upcoming-trips">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="section-title">Upcoming Trips</h2>
+        </div>
+      </div>
       <div class="row">
         {% for trip in trips %}
-          <div class="col-md-4 col-sm-12 mb-4">
+          <div class="col-md-4">
             <div class="card">
               <img src="{{ trip.image.url }}" class="card-img-top" alt="{{ trip.title }}">
               <div class="card-body">
                 <h5 class="card-title">{{ trip.title }}</h5>
                 <p class="card-text">{{ trip.description }}</p>
+                <p class="card-text"><small class="text-muted">{{ trip.start_date|date:"F d, Y" }}</small></p>
                 <a href="{% url 'trips:trip_detail' trip.pk %}" class="btn btn-primary">Learn More</a>
               </div>
             </div>
@@ -60,19 +67,15 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="cta py-5">
-    <div class="container">
+  <section class="cta">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <h2>Sign Up Now</h2>
+        <div class="col-md-12">
+          <h2 class="section-title">Sign Up Now</h2>
           <p>Don't miss out on our upcoming courses and trips.</p>
-        </div>
-        <div class="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
           <a href="#" class="btn btn-primary">Sign Up</a>
         </div>
       </div>
     </div>
   </section>
-
 {% endblock %}

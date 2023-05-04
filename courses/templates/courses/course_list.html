@@ -1,12 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Courses</h1>
-    <ul>
-        {% for course in courses %}
-            <li>{{ course.title }}</li>
-        {% empty %}
-            <li>No courses available.</li>
-        {% endfor %}
-    </ul>
+  <div class="container my-5">
+    <h1 class="mb-4">Upcoming Courses</h1>
+    <div class="row">
+      {% for course in courses %}
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ course.title }}</h5>
+              <p class="card-text">{{ course.description }}</p>
+              <p class="card-text"><small class="text-muted">{{ course.start_date|date:"F d, Y" }}</small></p>
+              <a href="{% url 'courses:course_detail' course.pk %}" class="btn btn-primary">Learn More</a>
+              <a href="{% url 'courses:course_book' course.pk %}" class="btn btn-secondary">Book Now</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p>No upcoming courses.</p>
+      {% endfor %}
+    </div>
+  </div>
 {% endblock %}
