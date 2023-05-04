@@ -150,7 +150,7 @@ header {
 
 /* Hero Section */
 .hero {
-  background-image: url('../images/hero-background.jpg');
+  background-image: url('https://res.cloudinary.com/dntcjbve4/image/upload/v1683237043/scubadiving_r9owkm.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -425,3 +425,5 @@ header {
   margin: 0.5rem 0;
   }
 }
+
+

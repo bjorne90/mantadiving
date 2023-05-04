@@ -7,6 +7,9 @@ from django.views import View
 from django.views.generic.edit import UpdateView
 from .models import UserProfile
 from django.urls import reverse
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect, get_object_or_404
+
 
 
 @login_required
@@ -63,3 +66,9 @@ class ProfileListView(View):
 def profile_list(request):
     profiles = UserProfile.objects.all()
     return render(request, 'profiles/profile_list.html', {'profiles': profiles})
+
+
+def profile_detail(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    profile = get_object_or_404(UserProfile, user=user)
+    return render(request, 'profiles/profile_detail.html', {'profile': profile})

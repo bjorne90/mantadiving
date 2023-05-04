@@ -3,23 +3,29 @@
 {% block content %}
   <div class="container my-5">
     <h1 class="mb-4">Upcoming Courses</h1>
-    <div class="row">
+    {% if courses %}
       {% for course in courses %}
-        <div class="col-md-4 mb-4">
-          <div class="card">
+        <div class="row my-4">
+          <div class="col-md-4">
             <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
-            <div class="card-body">
-              <h5 class="card-title">{{ course.title }}</h5>
-              <p class="card-text">{{ course.description }}</p>
-              <p class="card-text"><small class="text-muted">{{ course.start_date|date:"F d, Y" }}</small></p>
-              <a href="{% url 'courses:course_detail' course.pk %}" class="btn btn-primary">Learn More</a>
+          </div>
+          <div class="col-md-8">
+            <h2>{{ course.title }}</h2>
+            <p><strong>Start Date:</strong> {{ course.start_date|date:"F d, Y" }}</p>
+            <p>{{ course.description|safe }}</p>
+            <div class="d-flex">
+              <a href="{% url 'courses:course_detail' course.pk %}" class="btn btn-primary mr-3">Learn More</a>
               <a href="{% url 'courses:course_book' course.pk %}" class="btn btn-secondary">Book Now</a>
             </div>
           </div>
         </div>
-      {% empty %}
-        <p>No upcoming courses.</p>
       {% endfor %}
-    </div>
+    {% else %}
+      <div class="card">
+        <div class="card-body">
+          <p>No upcoming courses.</p>
+        </div>
+      </div>
+    {% endif %}
   </div>
 {% endblock %}

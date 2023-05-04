@@ -67,6 +67,7 @@ def course_detail(request, pk):
     return render(request, 'courses/course_detail.html', {'course': course})
 
 def home(request):
+    print("Home view called")
     courses = Course.objects.filter(published=True)
     trips = Trip.objects.filter(published=True)
     return render(request, 'home.html', {'courses': courses, 'trips': trips})

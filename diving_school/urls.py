@@ -7,9 +7,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('profiles.urls')),
-    # Add other app urlpatterns here
+    path('accounts/register/', TemplateView.as_view(template_name='registration/register.html'), name='register'),
+    path('courses/', include('courses.urls', namespace='courses')),
+    path('accounts/profile/', views.profile, name='profile'),
     path('calendar/', TemplateView.as_view(template_name="calendar.html"), name="calendar"),
-    path('courses/', include('courses.urls')),
     path('trips/', include('trips.urls')),
     path('', TemplateView.as_view(template_name="home.html"), name="home"),
     path('profiles/', views.profile_list, name='profile-list'),

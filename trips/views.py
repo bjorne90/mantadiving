@@ -5,6 +5,8 @@ from .forms import TripForm, BookingForm, TripBookingForm
 from django.urls import reverse
 from .models import Trip
 from django.contrib.auth.decorators import login_required
+from courses.models import Course
+from trips.models import Trip
 
 
 # check if user is admin
@@ -84,3 +86,8 @@ def trip_book(request, pk):
     else:
         form = TripBookingForm()
     return render(request, 'trips/trip_book.html', {'form': form, 'trip': trip})
+
+def home(request):
+    courses = Course.objects.filter(published=True)
+    trips = Trip.objects.filter(published=True)
+    return render(request, 'home.html', {'courses': courses, 'trips': trips})

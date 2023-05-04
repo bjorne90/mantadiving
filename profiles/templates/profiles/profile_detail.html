@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Welcome to your profile page, {{ user.username }}</h1>
+      <hr>
+
+      <h2>Profile Information</h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        <button class="btn btn-primary" type="submit">Update Profile</button>
+      </form>
+      
+      <hr>
+      
+      <h2>Change Password</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ password_form.as_p }}
+        <button class="btn btn-primary" type="submit">Change Password</button>
+      </form>
+      
+      <hr>
+      
+      <h2>Profile Image</h2>
+      {% if user.profile.image %}
+        <img class="img-thumbnail" src="{{ user.profile.image.url }}" alt="Profile Image">
+      {% else %}
+        <p>No profile image found.</p>
+      {% endif %}
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label class="form-label" for="id_image">Choose an image:</label>
+        <input class="form-control" type="file" id="id_image" name="image">
+        <button class="btn btn-primary" type="submit">Upload Image</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h2>Your Bokked Courses</h2>
+      {% if user.profile.courses.exists %}
+        <ul class="list-group">
+          {% for course in user.profile.courses.all %}
+            <li class="list-group-item">{{ course.title }}
+              <form method="post" class="d-inline-block float-end">
+                {% csrf_token %}
+                <input type="hidden" name="course_id" value="{{ course.id }}">
+                <button class="btn btn-danger btn-sm" type="submit">Cancel</button>
+              </form>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>You have no booked course.</p>
+      {% endif %}
+
+      <hr>
+
+      <h2>Your booked Trips</h2>
+      {% if user.profile.trips.exists %}
+        <ul class="list-group">
+          {% for trip in user.profile.trips.all %}
+            <li class="list-group-item">{{ trip.title }}
+              <form method="post" class="d-inline-block float-end">
+                {% csrf_token %}
+                <input type="hidden" name="trip_id" value="{{ trip.id }}">
+                <button class="btn btn-danger btn-sm" type="submit">Cancel</button>
+              </form>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>You have not booked a trip.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
