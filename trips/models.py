@@ -12,3 +12,12 @@ class Trip(models.Model):
 
     def __str__(self):
         return self.destination
+
+class Booking(models.Model):
+    trip = models.ForeignKey(Trip, on_delete=models.CASCADE, related_name='bookings')
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='bookings')
+    date = models.DateTimeField()
+    quantity = models.PositiveIntegerField()
+
+    def __str__(self):
+        return f'{self.trip.destination} - {self.user}'

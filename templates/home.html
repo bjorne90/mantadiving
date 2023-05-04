@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Welcome to Diving School</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+  <h1>Welcome to Manta Diving School!</h1>
+  <p>We offer a variety of courses and trips to suit divers of all levels.</p>
+  <h2>Our Upcoming Trips</h2>
+  <ul>
+    {% for trip in trips %}
+      <li><a href="{% url 'trips:trip_detail' trip.pk %}">{{ trip.title }}</a></li>
+    {% empty %}
+      <li>No upcoming trips.</li>
+    {% endfor %}
+  </ul>
 {% endblock %}

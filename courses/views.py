@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Course
 from .forms import CourseForm
+from django.urls import reverse
 
 # List view (already created)
 def course_list(request):
@@ -37,3 +38,17 @@ def course_delete(request, pk):
         course.delete()
         return redirect('courses:course_list')
     return render(request, 'courses/course_confirm_delete.html', {'course': course})
+
+
+def booking_create(request, pk):
+    course = get_object_or_404(Course, pk=pk)
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.course = course
+            booking.save()
+            return redirect('courses:course_detail', pk=course.pk)
+    else:
+        form = BookingForm()
+    return render(request, 'courses/booking_form.html', {'form': form, 'course': course})
