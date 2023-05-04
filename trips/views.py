@@ -1,8 +1,7 @@
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Trip
-from .forms import TripForm
-from .forms import BookingForm
+from .forms import TripForm, BookingForm, TripBookingForm
 from django.urls import reverse
 from .models import Trip
 from django.contrib.auth.decorators import login_required

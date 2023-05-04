@@ -9,7 +9,7 @@
                 {{ trip.title }}
                 <a href="{% url 'trips:trip_update' trip.pk %}">Edit</a>
                 <a href="{% url 'trips:trip_delete' trip.pk %}">Delete</a>
-                <a href="{% url 'trip_book' trip.pk %}">Book this trip</a>
+                
 
             </li>
         {% endfor %}

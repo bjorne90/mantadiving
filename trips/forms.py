@@ -10,3 +10,8 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = ('trip', 'date', 'quantity')
+
+class TripBookingForm(forms.ModelForm):
+    class Meta:
+        model = Booking
+        fields = ('date', 'quantity')
