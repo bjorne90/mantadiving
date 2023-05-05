@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import django.contrib.staticfiles
 from django.contrib.messages import constants as messages
 if os.path.isfile('env.py'):
     import env
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     # 'cloudinary_storage',
     'django.contrib.staticfiles',
     # 'cloudinary',
+    'bootstrap4',
     'rest_framework',
     'courses',
     'divelog',
@@ -77,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static',
             ],
         },
     },
@@ -136,6 +139,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'course_images')
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 STATIC_URL = '/static/'

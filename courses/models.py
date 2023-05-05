@@ -10,6 +10,7 @@ class Course(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     participants = models.ManyToManyField(UserProfile, related_name='courses')
     published = models.BooleanField(default=False)
+    image = models.ImageField(upload_to='course_images/', default='default.jpg', blank=True, null=True)
 
     def __str__(self):
         return self.name

@@ -1,0 +1,429 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header styles */
+header {
+  background-color: #0a1827;
+  padding: 1rem 0;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.header-logo img {
+  max-width: 100px;
+}
+
+.header-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.header-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-menu li {
+  margin-right: 1.5rem;
+}
+
+.header-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.header-menu a:hover {
+  color: #ffbe00;
+}
+
+/* Hero section styles */
+.hero {
+  background-image: url('https://picsum.photos/id/41/1200/400');
+  background-size: cover;
+  background-position: center;
+  padding: 5rem 0;
+  color: #fff;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background-color: #ffbe00;
+  color: #0a1827;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hero-btn:hover {
+  background-color: #fff;
+  color: #ffbe00;
+}
+
+/* Upcoming courses section styles */
+.upcoming-courses {
+  margin-top: 3rem;
+}
+
+.course-card {
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.course-card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.course-card .card-body {
+  padding: 1.5rem;
+}
+
+.course-card h5 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.course-card p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.course-card .course-date {
+  font-size: 1.2rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.course-card .btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background-color: #ffbe00;
+  color: #0a1827;
+  font-size: 1.2rem
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('https://res.cloudinary.com/dntcjbve4/image/upload/v1683237043/scubadiving_r9owkm.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  max-width: 50%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero .btn-primary {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #F0B90B;
+  border-color: #F0B90B;
+  margin-top: 2rem;
+}
+
+.hero .btn-primary:hover {
+  background-color: #fff;
+  color: #F0B90B;
+}
+
+/* Upcoming Courses Section */
+.upcoming-courses {
+  margin-top: 4rem;
+}
+
+.upcoming-courses h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.upcoming-courses .card {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s;
+}
+
+.upcoming-courses .card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.15);
+}
+
+.upcoming-courses .card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.upcoming-courses .card-body {
+  padding: 2rem;
+}
+
+.upcoming-courses .card-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.upcoming-courses .card-text {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.upcoming-courses .text-muted {
+  font-size: 1.2rem;
+}
+
+.upcoming-courses .btn-primary {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #F0B90B;
+  border-color: #F0B90B;
+  margin-top: 1rem;
+}
+
+.upcoming-courses .btn-primary:hover {
+  background-color: #fff;
+  color: #F0B90B;
+}
+
+/* Upcoming Trips Section */
+.upcoming-trips {
+  margin-top: 4rem;
+}
+
+.upcoming-trips h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.upcoming-trips .card {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s;
+}
+
+.upcoming-trips .card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.75
+}
+
+.upcoming-trips .card img {
+  height: 200px;
+  object-fit: cover;
+  }
+  
+  .upcoming-trips .card-body {
+  padding: 2rem;
+  }
+  
+  .upcoming-trips .card-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  }
+  
+  .upcoming-trips .card-text {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+  }
+  
+  .upcoming-trips .text-muted {
+  font-size: 1.2rem;
+  }
+  
+  .upcoming-trips .btn-primary {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #F0B90B;
+  border-color: #F0B90B;
+  margin-top: 1rem;
+  }
+  
+  .upcoming-trips .btn-primary:hover {
+  background-color: #fff;
+  color: #F0B90B;
+  }
+  
+  /* CTA Section */
+  .cta {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 5rem 0;
+  }
+  
+  .cta h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  }
+  
+  .cta p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  }
+  
+  .cta .btn-primary {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: #F0B90B;
+  border-color: #F0B90B;
+  }
+  
+  .cta .btn-primary:hover {
+  background-color: #fff;
+  color: #F0B90B;
+  }
+  
+  /* Footer Section */
+  footer {
+  background-color: #0a1827;
+  color: #fff;
+  text-align: center;
+  padding: 3rem 0;
+  }
+  
+  .footer-logo img {
+  max-width: 100px;
+  margin-bottom: 1rem;
+  }
+  
+  .footer-nav {
+  margin-bottom: 2rem;
+  }
+  
+  .footer-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  }
+  
+  .footer-nav li {
+  display: inline-block;
+  margin-right: 2rem;
+  }
+  
+  .footer-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  }
+  
+  .footer-nav a:hover {
+  color: #ffbe00;
+  }
+  
+  .footer-contact {
+  margin-bottom: 2rem;
+  }
+  
+  .footer-contact p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  }
+  
+  .footer-social {
+  margin-bottom: 2rem;
+  }
+  
+  .footer-social ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  }
+  
+  .footer-social li {
+  display: inline-block;
+  margin-right: 1rem;
+  }
+  
+  .footer-social a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
+  }
+  
+  .footer-social a:hover {
+  color: #ffbe00;
+  transform: translateY(-0.25rem);
+  }
+  
+  @media screen and (max-width: 768px) {
+  /* Header styles */
+  .header-menu {
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+  }
+  
+  .header-menu li {
+  margin: 0.5rem 0;
+  }
+}
+
+

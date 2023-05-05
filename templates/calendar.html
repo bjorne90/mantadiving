@@ -1,8 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Calendar</h2>
-  <div id="calendar"></div>
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Upcoming Events</h2>
+      <ul class="list-group">
+        {% for event in events %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ event.title }}
+            <span class="badge bg-primary rounded-pill">#</span>
+          </li>
+        {% empty %}
+          <li class="list-group-item">No upcoming events.</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-8">
+      <h2>Calendar</h2>
+      <div id="calendar"></div>
+    </div>
+  </div>
+
+  <style>
+    .fc-content {
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+      color: #31708f;
+    }
+
+    .list-group {
+      margin-bottom: 2rem;
+    }
+
+    .list-group-item {
+      border: none;
+    }
+  </style>
 
   <script>
     $(document).ready(function() {
@@ -14,7 +47,7 @@
               title: course.name,
               start: course.start_date,
               end: course.end_date,
-              color: 'blue',
+              color: '#428bca',
             })));
 
           const tripEvents = fetch('/trips/api/trips/')
@@ -23,7 +56,7 @@
               title: trip.destination,
               start: trip.start_date,
               end: trip.end_date,
-              color: 'green',
+              color: '#5cb85c',
             })));
 
           Promise.all([courseEvents, tripEvents])
@@ -37,6 +70,9 @@
           right: 'month,agendaWeek,agendaDay'
         },
         defaultView: 'month',
+        eventRender: function(event, element) {
+          element.find('.fc-title').html(event.title);
+        }
       });
     });
   </script>
